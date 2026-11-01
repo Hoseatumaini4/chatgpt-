@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 def create_app(cfg: Optional[Config] = None, *, sms=None, ai=None, executor=None) -> Flask:
     cfg = cfg or Config.from_env()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    logging.getLogger().setLevel(logging.INFO)
 
     store = Store(cfg.db_path)
     store.purge()
